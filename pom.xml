@@ -141,6 +141,12 @@
     </dependency>
   </dependencies>
 
+  <scm>
+    <url>https://github.com/sauthieg/notes-stash-plugin/</url>
+    <connection>scm:git:git@github.com:sauthieg/notes-stash-plugin.git</connection>
+    <developerConnection>scm:git:git@github.com:sauthieg/notes-stash-plugin.git</developerConnection>
+  </scm>
+
   <build>
     <plugins>
       <plugin>
