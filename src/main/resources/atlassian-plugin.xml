@@ -46,7 +46,7 @@
   </web-resource>
 
   <client-web-panel name="Commit Notes link" key="commit-notes-panel" location="stash.changeset.related-entities" weight="2000">
-    <client-context-provider>ForgeRock.Notes.getNote</client-context-provider>
+    <client-context-provider>com.forgerock.stash.notes.getNote</client-context-provider>
     <resource name="view"
               type="soy"
               location="com.forgerock.stash.notes.notes-stash-plugin:commit-notes-resources/com.forgerock.stash.notes.commitNotesPanel"/>

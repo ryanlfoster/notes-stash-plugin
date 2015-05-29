@@ -16,8 +16,10 @@
 
 (function($) {
     // Set up our namespace
-    window.ForgeRock = window.ForgeRock || {};
-    ForgeRock.Notes = ForgeRock.Notes || {};
+    window.com = window.com || {};
+    com.forgerock = com.forgerock || {};
+    com.forgerock.stash = com.forgerock.stash || {};
+    com.forgerock.stash.notes = com.forgerock.stash.notes || {};
 
     var storage = {
         getNote : function(changeset, repository) {
@@ -57,10 +59,10 @@
     }
 
     /* Expose the client-context-provider function */
-    ForgeRock.Notes.getNote = getNote;
+    com.forgerock.stash.notes.getNote = getNote;
 
     /* use a live event to handle the link being clicked. */
-    $(document).on('click', '.mycompany-todos-link', function(e) {
+    $(document).on('click', '.forgerock-notes-link', function(e) {
         e.preventDefault();
 
         // open a dialog to show the note details.
