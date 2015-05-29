@@ -147,6 +147,11 @@
     <developerConnection>scm:git:git@github.com:sauthieg/notes-stash-plugin.git</developerConnection>
   </scm>
 
+  <issueManagement>
+    <system>github</system>
+    <url>https://github.com/sauthieg/notes-stash-plugin/issues</url>
+  </issueManagement>
+
   <build>
     <plugins>
       <plugin>
