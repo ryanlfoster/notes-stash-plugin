@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright 2015 ForgeRock AS.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<atlassian-plugin key="${project.groupId}.${project.artifactId}" name="${project.name}" plugins-version="2">
+  <plugin-info>
+    <description>${project.description}</description>
+    <version>${project.version}</version>
+    <vendor name="${project.organization.name}" url="${project.organization.url}"/>
+    <param name="plugin-icon">images/pluginIcon.png</param>
+    <param name="plugin-logo">images/pluginLogo.png</param>
+  </plugin-info>
+
+  <!-- add our i18n resource -->
+  <resource type="i18n" name="i18n" location="notes-stash-plugin"/>
+
+  <!-- import from the product container -->
+  <component-import key="repositoryService" interface="com.atlassian.stash.repository.RepositoryService"/>
+  <component-import key="scmService" interface="com.atlassian.stash.scm.ScmService" />
+  <component-import key="i18nService" interface="com.atlassian.stash.i18n.I18nService" />
+
+  <web-resource name="commit-notes Web Resources" i18n-name-key="commit-notes-resources.name" key="commit-notes-resources">
+    <description key="commit-notes-resources.description">The commit-notes-resources Plugin</description>
+    <transformation extension="soy">
+      <transformer key="soyTransformer"/>
+    </transformation>
+    <resource name="commit-notes.soy.js" type="download" location="/soy/commit-notes.soy"/>
+    <resource name="commit-notes.js" type="download" location="/js/commit-notes.js"/>
+    <dependency>com.atlassian.auiplugin:ajs</dependency>
+    <dependency>com.atlassian.auiplugin:aui-experimental-iconfont</dependency>
+    <context>stash.page.repository.changeset</context>
+  </web-resource>
+
+  <client-web-panel name="Commit Notes link" key="commit-notes-panel" location="stash.changeset.related-entities" weight="2000">
+    <client-context-provider>ForgeRock.Notes.getNote</client-context-provider>
+    <resource name="view"
+              type="soy"
+              location="com.forgerock.stash.notes.notes-stash-plugin:commit-notes-resources/com.forgerock.stash.notes.commitNotesPanel"/>
+    <dependency>com.forgerock.stash.notes.notes-stash-plugin:commit-notes-resources</dependency>
+  </client-web-panel>
+
+  <rest name="Notes Resources" i18n-name-key="notes-resources.name" key="notes-resources" path="/notes" version="1.0">
+    <description key="notes-resources.description">The Notes Resources Plugin</description>
+  </rest>
+
+</atlassian-plugin>
