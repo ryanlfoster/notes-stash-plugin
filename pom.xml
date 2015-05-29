@@ -33,6 +33,13 @@
     <url>http://www.forgerock.com/</url>
   </organization>
 
+  <licenses>
+    <license>
+      <name>Apache Software License 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+    </license>
+  </licenses>
+
   <properties>
     <stash.version>3.4.1</stash.version>
     <stash.data.version>3.4.1</stash.data.version>
